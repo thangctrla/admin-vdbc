@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    xcore:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${DB_HOST:150.95.105.60}:${DB_PORT:5432}/${DB_NAME:admin_vdbc}
+      username: ${DB_USERNAME:postgres}
+      password: ${DB_PASSWORD:yourpassword}
+    wad:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${DB_HOST:163.44.193.206}:${DB_PORT:5432}/${DB_NAME:wad}
+      username: ${DB_USERNAME:wad}
+      password: 82g}fbB2Jb2i
+
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    generate-ddl: ${JPA_GENERATE_DDL:true}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: ${HIBERNATE_FORMAT_SQL:true}
+        id:
+          new_generator_mappings: false
+        show_sql: ${HIBERNATE_SHOW_SQL:true}
+    show-sql: ${JPA_SHOW_SQL:true}
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:50MB}
+      max-request-size: ${MAX_REQUEST_SIZE:50MB}
+      enabled: ${MULTIPART_ENABLED:true}
+
+
+server:
+  port: ${SERVER_PORT:9089}
+  servlet:
+    context-path: ${SERVER_CONTEXT_PATH:/api}
+  forward-headers-strategy: framework
+
+security:
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET:120nsdsjhbfdkajsdnkajnsdkanasbdkjasddakjsdnk1821jUDu1aWyi}
+      expire-length: ${JWT_EXPIRE_LENGTH:604800000}
+
+
+
