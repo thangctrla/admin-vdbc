@@ -38,7 +38,8 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> {})
+                .cors(cors -> {
+                })
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/api/oauth2/authorization/**").permitAll()
@@ -62,13 +63,13 @@ public class WebSecurityConfig {
             response.setCharacterEncoding("UTF-8");
 
             String jsonResponse = """
-                {
-                    "error": "Unauthorized",
-                    "message": "Token không hợp lệ hoặc đã hết hạn",
-                    "status": 401,
-                    "timestamp": "%s"
-                }
-                """.formatted(java.time.Instant.now().toString());
+                    {
+                        "error": "Unauthorized",
+                        "message": "Token không hợp lệ hoặc đã hết hạn",
+                        "status": 401,
+                        "timestamp": "%s"
+                    }
+                    """.formatted(java.time.Instant.now().toString());
 
             response.getWriter().write(jsonResponse);
         };
@@ -92,20 +93,38 @@ public class WebSecurityConfig {
 //        source.registerCorsConfiguration("/**", config);
 //        return source;
 //    }
-    @Bean
-    public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:5173", "https://admin.worldarchidesign.com", "https://worldarchidesign.com"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
-    }
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(true);
+//        config.setAllowedOrigins(List.of("http://localhost:5173", "https://admin.worldarchidesign.com", "https://worldarchidesign.com"));
+//        config.setAllowedHeaders(List.of("*"));
+//        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+//        source.registerCorsConfiguration("/**", config);
+//        return new CorsFilter(source);
+//    }
 //
 //    @Bean
 //    public CorsFilter corsFilter() {
 //        return new CorsFilter(corsConfigurationSource());
 //    }
+
+    @Bean
+    public UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "https://admin.worldarchidesign.com",
+                "https://worldarchidesign.com"
+        ));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
+    }
+
 }
