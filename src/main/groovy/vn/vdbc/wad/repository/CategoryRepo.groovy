@@ -7,5 +7,5 @@ import vn.vdbc.wad.model.Category
 
 @Repository
 @RepositoryRestResource(path = "wad-category")
-interface CategoryRepo extends JpaRepository<Category, String> {
+interface CategoryRepo extends JpaRepository<Category, Long> {
 }

@@ -31,8 +31,8 @@ public class JacksonConfig {
         customModule.addSerializer(PagedModel.class, new CustomPagedModelSerializer());
         customModule.addSerializer(CollectionModel.class, new CustomCollectionModelSerializer());
         mapper.registerModule(customModule);
-        mapper.addMixIn(RepresentationModel.class, RepresentationModelMixin.class);
-        mapper.addMixIn(EntityModel.class, RepresentationModelMixin.class);
+//        mapper.addMixIn(RepresentationModel.class, RepresentationModelMixin.class);
+//        mapper.addMixIn(EntityModel.class, RepresentationModelMixin.class);
 
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
