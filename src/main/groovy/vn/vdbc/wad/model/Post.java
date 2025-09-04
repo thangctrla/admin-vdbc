@@ -1,11 +1,9 @@
     package vn.vdbc.wad.model;
 
-    import com.fasterxml.jackson.annotation.JsonIgnore;
     import jakarta.persistence.*;
     import lombok.Data;
 
     import java.util.ArrayList;
-    import java.util.Collections;
     import java.util.List;
 
     @Entity

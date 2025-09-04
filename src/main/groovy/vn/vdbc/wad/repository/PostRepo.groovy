@@ -4,9 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
 import org.springframework.data.rest.core.annotation.RestResource
 import org.springframework.stereotype.Repository
+import vn.vdbc.wad.configuration.PostWithCategories
 import vn.vdbc.wad.model.Post
 
 @Repository
-@RepositoryRestResource(path = "wad-post")
+@RepositoryRestResource(path = "wad-post", excerptProjection = PostWithCategories.class)
 interface PostRepo extends JpaRepository<Post, Long> {
 }

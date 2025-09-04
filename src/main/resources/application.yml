@@ -1,4 +1,9 @@
 spring:
+  data:
+    rest:
+      default-media-type: application/json
+  hateoas:
+    use-hal-as-default-json-media-type: off
   datasource:
     xcore:
       driver-class-name: org.postgresql.Driver
