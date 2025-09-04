@@ -59,8 +59,9 @@ public class Post {
     @Column(columnDefinition = "text", name = "short_content")
     private String shortContent;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Comment> comments;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
