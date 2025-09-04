@@ -8,6 +8,6 @@ import vn.vdbc.wad.configuration.PostWithCategories
 import vn.vdbc.wad.model.Post
 
 @Repository
-@RepositoryRestResource(path = "wad-post", excerptProjection = PostWithCategories.class)
+@RepositoryRestResource(path = "wad-post")
 interface PostRepo extends JpaRepository<Post, Long> {
 }
