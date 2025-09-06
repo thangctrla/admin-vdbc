@@ -41,8 +41,8 @@ class MenuService implements MenuDao {
         def check = dbs.rows("xcore", "select * from menu_parent where id = ?", body.id)
         if (!check.isEmpty()) throw new RuntimeException("Trùng lặp key")
         def rows = dbs.executeUpdate("xcore", """
-            INSERT INTO menu_parent (id, name, icon, order_index, is_visible, status) VALUES(?, ?, ?, ?, 0, 'Active')""",
-                body.id, body.name, body.icon, body.orderIndex)
+            INSERT INTO menu_parent (id, name, icon, order_index, is_visible, status) VALUES(?, ?, ?, ?, ?, 'Active')""",
+                body.id, body.name, body.icon, body.orderIndex, body.isVisible)
         return rows
     }
 
