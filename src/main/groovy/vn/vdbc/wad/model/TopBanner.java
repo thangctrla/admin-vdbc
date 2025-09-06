@@ -8,6 +8,7 @@ import lombok.Data;
 @Table(name = "top_banner")
 public class TopBanner {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
