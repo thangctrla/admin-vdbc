@@ -7,11 +7,11 @@ import vn.vdbc.core.model.base.BaseEntity;
 
 import java.util.Date;
 
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "user_data")
 @Data
-public class UserData extends BaseEntity {
+public class UserData  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
