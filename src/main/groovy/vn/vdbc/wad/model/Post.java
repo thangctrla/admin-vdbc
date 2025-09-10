@@ -54,16 +54,16 @@ public class Post {
             joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id")
     )
-    private List<Category> lsCategories;
+    private List<Category> categories;
 
     @Column(columnDefinition = "text", name = "short_content")
     private String shortContent;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = false)
     private List<Comment> comments;
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "post_tag",
 
@@ -82,15 +82,15 @@ public class Post {
     private List<String> tagNews = new ArrayList<>();
 
 
-    @Transient
-    @JsonProperty("categories")
-    public List<String> getCategoryLinks() {
-        if (lsCategories == null) {
-            return new ArrayList<>();
-        }
-        return lsCategories.stream()
-                .map(c -> "/wad-category/" + c.getId())
-                .toList();
-    }
+//    @Transient
+//    @JsonProperty("categories")
+//    public List<String> getCategoryLinks() {
+//        if (lsCategories == null) {
+//            return new ArrayList<>();
+//        }
+//        return lsCategories.stream()
+//                .map(c -> "/wad-category/" + c.getId())
+//                .toList();
+//    }
 
 }
