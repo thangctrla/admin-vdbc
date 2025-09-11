@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -80,6 +82,12 @@ public class Post {
     )
     @Column(name = "tag_news")
     private List<String> tagNews = new ArrayList<>();
+
+
+    @Column(name = "created_at")
+    private Date createdAt = new Date();
+    @Column(name = "updated_at")
+    private Date updatedAt = new Date();
 
 
 //    @Transient
