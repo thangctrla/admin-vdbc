@@ -13,8 +13,8 @@ public class TopBanner {
     private String title;
     private String description;
     @Column(insertable = false, updatable = false)
-    private String image;
-    @Column(name = "image")
+//    private String image;
     private String thumbnail;
+    private String link;
     private String status;
 }
