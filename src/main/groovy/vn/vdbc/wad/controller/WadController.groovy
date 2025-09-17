@@ -98,6 +98,7 @@ class WadController {
         Post post = new Post()
         updatePostFromPayload(post, payload)
         post.createdAt = new Date()
+        post.createdName = "WORLD ARCHI DESIGN MAGAZINE"
         Post saved = postRepo.save(post)
         return ResponseEntity.ok(convertPostToDTO(saved))
     }

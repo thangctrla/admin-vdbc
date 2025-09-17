@@ -46,6 +46,9 @@ public class Post {
     @Column(name = "category_name")
     private String categoryName;
 
+    @Column(name = "created_name")
+    private String createdName;
+
     @Column(name = "type_post")
     private String typePost;
 
