@@ -21,7 +21,6 @@ import vn.vdbc.wad.repository.CategoryRepo
 import vn.vdbc.wad.repository.PostRepo
 
 
-
 @RestController
 @RequestMapping("wad-post")
 class WadController {
@@ -98,6 +97,7 @@ class WadController {
     ResponseEntity<?> createPost(@RequestBody Map<String, Object> payload) {
         Post post = new Post()
         updatePostFromPayload(post, payload)
+        post.createdAt = new Date()
         Post saved = postRepo.save(post)
         return ResponseEntity.ok(convertPostToDTO(saved))
     }
@@ -132,6 +132,9 @@ class WadController {
         post.shortContent = payload.get("shortContent") as String
 
         post.tagNews = (payload.get("tagNews") ?: []) as List<String>
+
+        post.updatedAt = new Date()
+
 
         List<String> catLinks = (payload.get("categories") ?: []) as List<String>
         if (catLinks) {
