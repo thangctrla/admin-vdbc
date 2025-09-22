@@ -83,6 +83,7 @@ class WadController {
                 "projectName" : post.projectName,
                 "categoryName": post.categoryName,
                 "typePost"    : post.typePost,
+                "createdName" : post.createdName,
                 "shortContent": post.shortContent,
                 "tagNews"     : post.tagNews ?: [],
                 "categories"  : post.categories?.collect { "/wad-category/" + it.id } ?: [],
