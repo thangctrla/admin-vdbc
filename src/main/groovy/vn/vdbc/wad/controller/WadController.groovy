@@ -98,7 +98,7 @@ class WadController {
         Post post = new Post()
         updatePostFromPayload(post, payload)
         post.createdAt = new Date()
-        post.createdName = "WORLD ARCHI DESIGN MAGAZINE"
+//        post.createdName = "WORLD ARCHI DESIGN MAGAZINE"
         Post saved = postRepo.save(post)
         return ResponseEntity.ok(convertPostToDTO(saved))
     }
@@ -131,6 +131,8 @@ class WadController {
         post.categoryName = payload.get("categoryName") as String
         post.typePost = payload.get("typePost") as String
         post.shortContent = payload.get("shortContent") as String
+        post.createdName = payload.get("createdName") as String
+
 
         post.tagNews = (payload.get("tagNews") ?: []) as List<String>
 
