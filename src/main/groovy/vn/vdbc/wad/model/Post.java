@@ -93,6 +93,9 @@ public class Post {
     private Date updatedAt = new Date();
 
 
+    private String country;
+
+
 //    @Transient
 //    @JsonProperty("categories")
 //    public List<String> getCategoryLinks() {

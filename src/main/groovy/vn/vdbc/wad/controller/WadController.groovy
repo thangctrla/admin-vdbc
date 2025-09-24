@@ -86,6 +86,7 @@ class WadController {
                 "createdName" : post.createdName,
                 "shortContent": post.shortContent,
                 "tagNews"     : post.tagNews ?: [],
+                "country"     : post.country,
                 "categories"  : post.categories?.collect { "/wad-category/" + it.id } ?: [],
                 "tags"        : post.tags?.collect { "/wad-tag/" + it.id } ?: [],
                 "comments"    : []
@@ -133,6 +134,8 @@ class WadController {
         post.typePost = payload.get("typePost") as String
         post.shortContent = payload.get("shortContent") as String
         post.createdName = payload.get("createdName") as String
+
+        post.country = payload.get("country") as String
 
 
         post.tagNews = (payload.get("tagNews") ?: []) as List<String>
